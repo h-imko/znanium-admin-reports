@@ -12,10 +12,13 @@ import autoprefixer from 'gulp-autoprefixer'
 
 let esbuild = createGulpEsbuild({
 	piping: true,
-	incremental: argv.fwatch,
 })
 
 const sass = gSass(rawsass)
+
+// rawsass.compileAsync("",{
+
+// })
 
 function cleanExtraImgs() {
 	return gulp.src(["./src/assets/static/img/**/*.*", "!./src/assets/static/img/icon/stack.svg"], {
@@ -44,16 +47,15 @@ function css() {
 	return gulp.src(["./src/assets/style/**/*.scss", "!./src/assets/style/**/_*.scss"])
 		.pipe(sourcemaps.init())
 		.pipe(sass({
-			style: "compressed"
-		}))
-		.pipe(replaceSrc())
-		.pipe(autoprefixer())
-		.on("error", function (error) {
+			style: "compressed",
+		})).on("error", function (error) {
 			printPaintedMessage(error.message, "CSS")
 			bs.notify("CSS Error")
 			this.emit("end")
 		})
-		.pipe(sourcemaps.write())
+		.pipe(replaceSrc())
+		.pipe(autoprefixer())
+		.pipe(sourcemaps.write("./"))
 		.pipe(destGulp.dest(getDestPath()))
 		.pipe(bs.stream())
 }
@@ -62,11 +64,15 @@ function js() {
 	return gulp.src(["./src/assets/script/**/*.js", "!./src/assets/script/**/_*.js"])
 		.pipe(sourcemaps.init())
 		.pipe(esbuild({
-			outbase: "./",
+			outbase: "./src/assets/script",
+			outdir: "./build/assets/script",
 			sourcemap: "linked",
+			format: "esm",
 			bundle: true,
+			splitting: true,
+			treeShaking: true,
 			drop: argv.min ? ["console", "debugger"] : [],
-			minify: argv.min
+			minify: argv.min,
 		}))
 		.on("error", function (error) {
 			printPaintedMessage(error.message, "JS")
@@ -79,7 +85,7 @@ function js() {
 }
 
 function html() {
-	return gulp.src(["./src/*.ejs", "./src/*.html"])
+	return gulp.src(["./src/**/*.ejs", "./src/**/*.html", "!./src/assets/**/*"])
 		.pipe(ejsCompile())
 		.on("error", function (error) {
 			printPaintedMessage(error.message, "EJS")
@@ -162,7 +168,6 @@ function cleanInitials() {
 function remakeEsbuild() {
 	esbuild = createGulpEsbuild({
 		piping: true,
-		incremental: argv.fwatch,
 	})
 
 	return nothing()
