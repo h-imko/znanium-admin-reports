@@ -75,7 +75,7 @@ function reload() {
 }
 
 function replaceSrc() {
-	return replace("/src/", argv.ram ?  "/" : "/znanium-admin-reports/")
+	return replace("/src/", argv.ram ?  "/" : "/znanium-admin-reports/build/")
 }
 
 function clean() {
