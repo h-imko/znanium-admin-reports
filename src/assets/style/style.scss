@@ -14,9 +14,19 @@
 // @use "custom-select";
 // @use "accordion";
 // @use "counter";
-@use "breakpoint";
-@use "container";
-@use "color";
-@use "font";
-@use "mixins";
-@use "general";
+// @use "breakpoint";
+// @use "container";
+// @use "color";
+// @use "font";
+// @use "mixins";
+// @use "general";
+
+.panel-heading-nav {
+  border-bottom: 0;
+  padding: 10px 0 0;
+}
+
+.panel-heading-nav .nav {
+  padding-left: 10px;
+  padding-right: 10px;
+}

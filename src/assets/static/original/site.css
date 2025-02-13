@@ -1,0 +1,191 @@
+html,
+body {
+    height: 100%;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view td {
+    /*white-space: nowrap;*/
+}
+
+.grid-view .filters input,
+.grid-view .filters select {
+    min-width: 50px;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+    padding: 15px;
+    border: none;
+}
+
+@media(max-width:767px) {
+    .nav li > form > button.logout {
+        display:block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px;
+    }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+    text-decoration: none;
+}
+
+.nav > li > form > button.logout:focus {
+    outline: none;
+}
+
+/* Календарь вебинаров */
+.webinar-events .fc-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.webinar-events .fa {
+    margin-right: 4px;
+}
+
+.webinar-events .fc-event.draft {
+    background-color: #351669;
+}
+.webinar-events .fc-event.archive {
+    background-color: #3c3c56;
+}
+.webinar-events .fc-event.registration {
+    background-color: #045d01;
+}
+.webinar-events .fc-event.announce {
+    background-color: #621d0b;
+}
+
+/* Панель справа */
+.fixed-panel {
+    position: fixed;
+    background-color: #fff;
+    box-shadow: -4px 0 7px 0 rgba(127, 127, 127, 0.6);
+    transition: all 0.3s ease-in-out 0s;
+    cursor: default;
+    padding: 10px;
+    z-index: 10000;
+}
+
+.fixed-panel.expanded {
+    right: 0 !important;
+}
+.fixed-panel section {
+    height: 100%;
+}
+
+.fixed-panel .touch-el {
+    display: block;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: -48px;
+    top: 0;
+    border-radius: 50% 0 0 50%;
+    background-color: #fff;
+    background-size: 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: -4px 0 7px 0 rgba(127, 127, 127, 0.6);
+}
+
+.fixed-panel.webinar-calendar{
+    width: 70vw;
+    height: 70vh;
+    right: -70vw;
+}
+.fixed-panel.webinar-calendar .touch-el {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15.07 15.57'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:%23337ab7;%7D%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M3.73,3.77H4.44A0.43,0.43,0,0,0,4.91,3.4v-3A0.43,0.43,0,0,0,4.44,0H3.73a0.43,0.43,0,0,0-.47.37v3A0.43,0.43,0,0,0,3.73,3.77Z' transform='translate(-0.25)'/%3E%3Cpath class='a' d='M11.13,3.77h0.71a0.43,0.43,0,0,0,.47-0.37v-3A0.43,0.43,0,0,0,11.84,0H11.13a0.43,0.43,0,0,0-.47.37v3A0.43,0.43,0,0,0,11.13,3.77Z' transform='translate(-0.25)'/%3E%3Cpath class='a' d='M14.75,1.44H12.88V3.76a1,1,0,0,1-1,.94H11.13a1,1,0,0,1-1-.94V1.44H5.47V3.76a1,1,0,0,1-1,.94H3.73a1,1,0,0,1-1-.94V1.44H0.82A0.57,0.57,0,0,0,.25,2V15a0.62,0.62,0,0,0,.35.57H14.53A0.65,0.65,0,0,0,15.32,15V2A0.57,0.57,0,0,0,14.75,1.44Zm-0.3,12.84a0.45,0.45,0,0,1-.49.52H8.88A29,29,0,0,0,14.45,11v3.25Zm0.11-4.81c-0.21.84-.68,1.81-1.54,1.18-1.25-.93-2.49-1.71-2.65.15-0.13,1.57-3,3.7-3.66,4.15H1.19A0.18,0.18,0,0,1,1,14.78v-8a0.18,0.18,0,0,1,.18-0.18H14.38a0.18,0.18,0,0,1,.18.18V9.47h0Z' transform='translate(-0.25)'/%3E%3Crect class='a' x='3.01' y='7.97' width='2.2' height='2.2'/%3E%3Crect class='a' x='6.63' y='7.97' width='2.2' height='2.2'/%3E%3Crect class='a' x='3.01' y='11.31' width='2.2' height='2.2'/%3E%3Cpath class='a' d='M6.88,13.51H7.52a18.88,18.88,0,0,0,1.56-1.65V11.31H6.88v2.2Z' transform='translate(-0.25)'/%3E%3Cpath class='a' d='M10.39,9a1,1,0,0,1,.73-0.28,2.9,2.9,0,0,1,1.47.6V8h-2.2V9Z' transform='translate(-0.25)'/%3E%3C/svg%3E");
+}
+
+p.help-block {
+    font-size: 1.2rem;
+    padding: 0;
+    color: #017c0f;
+}
